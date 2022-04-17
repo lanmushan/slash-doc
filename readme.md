@@ -6,11 +6,14 @@
 
 ### 依赖
 
+```xml
+
 <dependency>
-  <groupId>site.lanmushan</groupId>
-  <artifactId>slash-doc-starter</artifactId>
-  <version>1.0.1</version>
+    <groupId>site.lanmushan</groupId>
+    <artifactId>slash-doc-starter</artifactId>
+    <version>1.0.1</version>
 </dependency>
+```
 
 ### 配置文件
 

@@ -35,7 +35,7 @@ public enum EnabledEnum implements ApiModelEnumMappingProvider {
     @Override
     public List<ApiMapping> readMapping() {
         EnabledEnum[] enabledEnums = EnabledEnum.values();
-        List<ApiMapping> arrList = new ArrayList<>();
+        List<ApiMapping> arrList = new ArrayList<ApiMapping>();
         for (int i = 0; i < enabledEnums.length; i++) {
             EnabledEnum userTypeEnum = enabledEnums[i];
             arrList.add(new ApiMapping(userTypeEnum.type, userTypeEnum.value));

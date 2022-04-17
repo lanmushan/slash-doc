@@ -14,7 +14,7 @@ import javax.annotation.PostConstruct;
 @Configuration
 @Slf4j
 @ComponentScan(basePackages = "site.lanmushan.slashdocstarter")
-@ConditionalOnProperty(prefix = "slashdoc", value = "enabled", havingValue = "false")
+@ConditionalOnProperty(prefix = "slashdoc", value = "enabled", havingValue = "true")
 public class SlashDocConfiguration {
     @PostConstruct
     public void init() {

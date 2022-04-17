@@ -1,9 +1,9 @@
+##sw兼容版本配置
 spring:
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
-
-#mybatis:
-#  configuration:
-#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 debug: false
+##配置开启关闭
+slashdoc:
+  enabled: true

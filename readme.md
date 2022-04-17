@@ -1,15 +1,42 @@
-## 简介 
+## 简介
+
 基于knife4j,swagger增强处理
+
 ## 使用方法
 
+### 依赖
+
+<dependency>
+  <groupId>site.lanmushan</groupId>
+  <artifactId>slash-doc-starter</artifactId>
+  <version>1.0.1</version>
+</dependency>
+
+### 配置文件
+
+```yaml
+##sw兼容版本配置
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+debug: false
+##配置开启关闭
+slashdoc:
+  enabled: true
+```
+
 ## 增强内容
+
 ### springmvc增强
+
 直接在PostMapping，GetMapping写入name名称即可，省去原来的@ApiOperation注解，如果写了取原始的名称
+
 ```java
    @PostMapping(name = "测试测试", value = "/test")
-    public void PostMappingSaveGroup(@RequestBody SysTbApp sysTbApp, @RequestParam String test) {
+public void PostMappingSaveGroup(@RequestBody SysTbApp sysTbApp,@RequestParam String test){
         return;
-    }
+        }
 ```
 ### @Validated和@Valid校验增强,
 根据方法中@Validated和@Valid的注解，判断实体类内部相关校验注解

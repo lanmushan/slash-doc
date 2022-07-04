@@ -7,6 +7,7 @@ import site.lanmushan.slashdocdemo.enums.EnabledEnum;
 import site.lanmushan.slashdocstarter.annotations.ApiModelEnumMapping;
 
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 
 /**
  * @author dy
@@ -16,6 +17,7 @@ import javax.validation.constraints.Min;
 public class SysTbApp {
     private String appWebUrl;
     @ApiModelProperty(value = "接口地址")
+    @NotBlank
     private String appApiUrl;
     @ApiModelProperty(value = "启用状态", required = true)
     @ApiModelEnumMapping(value = EnabledEnum.class)

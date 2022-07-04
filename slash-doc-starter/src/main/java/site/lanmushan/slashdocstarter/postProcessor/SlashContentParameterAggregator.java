@@ -25,14 +25,14 @@ import java.util.function.Consumer;
 public class SlashContentParameterAggregator  extends ContentParameterAggregator {
     @Override
     public Collection<RequestParameter> aggregate(Collection<RequestParameter> parameters) {
-        log.info("执行参数解析:{}", JSON.toJSONString(parameters));
+        log.info("执行参数解析:{}", parameters.size());
         for (RequestParameter parameter:parameters) {
+            log.info("正在解析:{}", parameter.getName());
             Optional<ContentSpecification> contentSpecification= parameter.getParameterSpecification().getContent();
             if(!contentSpecification.isPresent())
             {
                 continue;
             }
-
             Set<Representation> representationSet= contentSpecification.get().getRepresentations();
             for (Representation representation: representationSet) {
                 CompoundModelSpecificationBuilder modelFacetsBuilder=new CompoundModelSpecificationBuilder();

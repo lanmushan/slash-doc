@@ -11,6 +11,7 @@ import site.lanmushan.slashdocstarter.util.ReflectionUtil;
 import springfox.documentation.schema.Model;
 import springfox.documentation.schema.ModelKey;
 import springfox.documentation.schema.ModelSpecification;
+import springfox.documentation.schema.ReferenceModelSpecification;
 import springfox.documentation.service.*;
 import springfox.documentation.spi.schema.contexts.ModelContext;
 import springfox.documentation.spi.service.contexts.RequestMappingContext;
@@ -90,7 +91,7 @@ public class SlashApiDescriptionReader {
         String suffixName = "_" + requestMappingContext.getName();
         Set<ModelSpecification> modelSpecifications = new HashSet<>();
         Set<RequestParameter> requestParameters = operation.getRequestParameters();
-        SlashDocContext slashDocContext=new SlashDocContext();
+        SlashDocContext slashDocContext = new SlashDocContext();
 
         for (RequestParameter requestParameter : requestParameters) {
             slashDocContext.setRequestParameter(requestParameter);
@@ -102,10 +103,14 @@ public class SlashApiDescriptionReader {
                 ContentSpecification contentSpecification = optionalContentSpecification.get();
                 Set<Representation> representations = contentSpecification.getRepresentations();
                 for (Representation representation : representations) {
-                    ModelKey modelKey = representation.getModel().getReference().get().getKey();
-                    ModelContext modelContext = getModelContent(modelKey, modelContexts);
-                    ReflectionUtil.setFieldValue(modelKey.getQualifiedModelName(), "name", modelKey.getQualifiedModelName().getName() + suffixName);
-                    modelSpecifications = slashApiModelSpecificationReader.read(suffixName, modelContext, requestMappingContext);
+                    Optional<ReferenceModelSpecification> referenceModelSpecification = representation.getModel().getReference();
+                    if (referenceModelSpecification.isPresent()) {
+                        ModelKey modelKey = referenceModelSpecification.get().getKey();
+                        ModelContext modelContext = getModelContent(modelKey, modelContexts);
+                        ReflectionUtil.setFieldValue(modelKey.getQualifiedModelName(), "name", modelKey.getQualifiedModelName().getName() + suffixName);
+                        modelSpecifications = slashApiModelSpecificationReader.read(suffixName, modelContext, requestMappingContext);
+
+                    }
 
                 }
             }
@@ -114,8 +119,7 @@ public class SlashApiDescriptionReader {
         SlashDocContextThreadLocal.set(slashDocContext);
         //解析响应参数
         ModelContext returnNodeContext = getReturnModelContent(modelContexts);
-        if(returnNodeContext!=null)
-        {
+        if (returnNodeContext != null) {
             Set<ModelSpecification> tempModelSpecification = slashApiModelSpecificationReader.read("", returnNodeContext, requestMappingContext);
             modelSpecifications.addAll(tempModelSpecification);
         }

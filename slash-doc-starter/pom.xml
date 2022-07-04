@@ -4,12 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>site.lanmushan</groupId>
-        <version>1.0.1</version>
+        <version>1.0.2</version>
         <artifactId>slash-doc</artifactId>
-        <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>slash-doc-starter</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <name>slash-doc-starter</name>
     <description>Demo project for Spring Boot</description>
     <properties>
@@ -19,6 +18,17 @@
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>knife4j-spring-boot-starter</artifactId>
+            <version>3.0.3</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.github.xiaoymin</groupId>
+                    <artifactId>knife4j-spring-boot-autoconfigure</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-spring</artifactId>
             <version>3.0.3</version>
         </dependency>
         <dependency>

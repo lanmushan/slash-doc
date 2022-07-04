@@ -1,2 +1,4 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-site.lanmushan.slashdocstarter.configuration.SlashDocConfiguration
+site.lanmushan.slashdocstarter.configuration.SlashDocConfiguration,\
+site.lanmushan.slashdocstarter.configuration.SwaggerConfig,\
+site.lanmushan.slashdocstarter.configuration.properties.SlashDocProperties

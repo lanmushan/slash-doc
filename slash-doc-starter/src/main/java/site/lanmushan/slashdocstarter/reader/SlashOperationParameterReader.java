@@ -99,11 +99,13 @@ public class SlashOperationParameterReader extends OperationParameterReader {
                         index++);
 
                 if (shouldExpand(methodParameter, alternate)) {
+
+                    List<Compatibility<springfox.documentation.service.Parameter, RequestParameter>> temp = expander.expand(new ExpansionContext("", alternate, context));
+                    ;
                     parameters.addAll(
-                            expander.expand(
-                                    new ExpansionContext("", alternate, context)));
+                            temp);
+                    log.info("常规参数:{}", parameters.size());
                 } else {
-                    log.debug("常规参数:{}",parameterContext);
                     parameters.add(pluginsManager.parameter(parameterContext));
                 }
             }

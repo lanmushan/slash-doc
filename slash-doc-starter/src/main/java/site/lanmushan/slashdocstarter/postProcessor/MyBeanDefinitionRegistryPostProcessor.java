@@ -21,11 +21,20 @@ public class MyBeanDefinitionRegistryPostProcessor implements BeanDefinitionRegi
         beanDefinitionRegistry.removeBeanDefinition("operationParameterReader");
 //        beanDefinitionRegistry.removeBeanDefinition("contentParameterAggregator");
         beanDefinitionRegistry.removeBeanDefinition("parameterDataTypeReader");
+        beanDefinitionRegistry.removeBeanDefinition("modelAttributeParameterExpander");
         beanDefinitionRegistry.removeBeanDefinition("apiModelPropertyPropertyBuilder");
         beanDefinitionRegistry.removeBeanDefinition("defaultModelSpecificationProvider");
-        beanDefinitionRegistry.removeBeanDefinition("minMaxPlugin");
-        beanDefinitionRegistry.removeBeanDefinition("notBlankPlugin");
-        beanDefinitionRegistry.removeBeanDefinition("sizePlugin");
+        if (beanDefinitionRegistry.containsBeanDefinition("minMaxPlugin")) {
+            beanDefinitionRegistry.removeBeanDefinition("minMaxPlugin");
+
+        }
+        if (beanDefinitionRegistry.containsBeanDefinition("notBlankPlugin")) {
+            beanDefinitionRegistry.removeBeanDefinition("notBlankPlugin");
+
+        }
+        if (beanDefinitionRegistry.containsBeanDefinition("sizePlugin")) {
+            beanDefinitionRegistry.removeBeanDefinition("sizePlugin");
+        }
 
 // 注册我们自己的bean定义
 //        BeanDefinitionBuilder beanDefinitionBuilder = BeanDefinitionBuilder.rootBeanDefinition(TestSwaggerApiListingReader.class);

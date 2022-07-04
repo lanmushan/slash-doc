@@ -1,10 +1,15 @@
 package site.lanmushan.slashdocstarter.configuration;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.autoconfigure.AutoConfigureAfter;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.FilterType;
+import site.lanmushan.slashdocstarter.configuration.properties.SlashDocProperties;
 
 import javax.annotation.PostConstruct;
 
@@ -13,8 +18,10 @@ import javax.annotation.PostConstruct;
  */
 @Configuration
 @Slf4j
-@ComponentScan(basePackages = "site.lanmushan.slashdocstarter")
-@ConditionalOnProperty(prefix = "slashdoc", value = "enabled", havingValue = "true")
+@ComponentScan(basePackages = "site.lanmushan.slashdocstarter",
+        excludeFilters = @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE,
+                classes = {SwaggerConfig.class, SlashDocProperties.class}))
+@ConditionalOnProperty(prefix = "slashdoc", value = "enhance", havingValue = "true")
 public class SlashDocConfiguration {
     @PostConstruct
     public void init() {

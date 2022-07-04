@@ -33,6 +33,9 @@ public class SlashDocContext {
      * @return
      */
     public <T extends Annotation> Optional<T> findMethodAnnotation(Class<T> annotation) {
+        if (requestMappingContext == null) {
+            return Optional.empty();
+        }
         return requestMappingContext.findAnnotation(annotation);
     }
 
@@ -44,6 +47,9 @@ public class SlashDocContext {
      * @return
      */
     public <T extends Annotation> Optional<T> findRequestParameterAnnotation(Class<T> annotation) {
+        if (requestMappingContext == null) {
+            return Optional.empty();
+        }
         List<ResolvedMethodParameter> resolvedMethodParameter = requestMappingContext.getParameters();
         return (Optional<T>) resolvedMethodParameter.get(requestParameter.getParameterIndex()).findAnnotation(annotation);
     }

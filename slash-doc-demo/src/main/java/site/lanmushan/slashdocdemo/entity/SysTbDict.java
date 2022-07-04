@@ -3,6 +3,9 @@ package site.lanmushan.slashdocdemo.entity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import site.lanmushan.slashdocdemo.controller.SaveGroup;
+
+import javax.validation.constraints.NotBlank;
 
 
 /**
@@ -13,9 +16,11 @@ import lombok.Data;
 public class SysTbDict {
     private String example;
     @ApiModelProperty(value = "映射名称")
+    @NotBlank
     private String dictName;
 
     @ApiModelProperty(value = "映射编码")
+    @NotBlank(groups = SaveGroup.class)
     private String dictCode;
 
     @ApiModelProperty(value = "所属分组")

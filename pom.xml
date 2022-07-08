@@ -47,7 +47,6 @@
                 <scope>import</scope>
                 <version>2.6.6</version>
             </dependency>
-
             <dependency>
                 <groupId>site.lanmushan</groupId>
                 <artifactId>slash-doc-starter</artifactId>
@@ -132,5 +131,5 @@
         </snapshotRepository>
     </distributionManagement>
     <!--slash-doc-starter>mvn clean deploy -P sonatype-oss-release -Dmaven.javadoc.skip=true -->
-    <!--    mvn versions:set -DnewVersion=1.0-dev-->
+    <!--    mvn versions:set -DnewVersion=1.0.4-RELEASES-->
 </project>

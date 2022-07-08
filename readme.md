@@ -27,6 +27,8 @@ debug: false
 ##配置开启关闭
 slashdoc:
   enabled: true
+  enhance: true
+  title: 测试文档
 ```
 
 ## 增强内容

@@ -34,9 +34,9 @@ import static springfox.bean.validators.plugins.Validators.extractAnnotation;
 /**
  * @author dy
  */
-@Configuration
-@Slf4j
-@Order(Ordered.HIGHEST_PRECEDENCE)
+//@Configuration
+//@Slf4j
+//@Order(Ordered.HIGHEST_PRECEDENCE)
 public class SlashApiModelPropertyPropertyBuilder extends ApiModelPropertyPropertyBuilder {
     @Autowired
     public SlashApiModelPropertyPropertyBuilder(DescriptionResolver descriptions,

@@ -13,7 +13,7 @@ import javax.validation.constraints.NotBlank;
  * @author dy
  */
 @Data
-@ApiModel
+@ApiModel("xxx")
 public class SysTbApp {
     private String appWebUrl;
     @ApiModelProperty(value = "接口地址")

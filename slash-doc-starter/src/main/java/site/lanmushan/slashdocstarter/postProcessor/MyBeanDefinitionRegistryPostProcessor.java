@@ -8,6 +8,9 @@ import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.BeanDefinitionRegistryPostProcessor;
 
+/**
+ * @author Administrator
+ */
 @Component
 @Slf4j
 public class MyBeanDefinitionRegistryPostProcessor implements BeanDefinitionRegistryPostProcessor {
@@ -22,7 +25,7 @@ public class MyBeanDefinitionRegistryPostProcessor implements BeanDefinitionRegi
 //        beanDefinitionRegistry.removeBeanDefinition("contentParameterAggregator");
         beanDefinitionRegistry.removeBeanDefinition("parameterDataTypeReader");
         beanDefinitionRegistry.removeBeanDefinition("modelAttributeParameterExpander");
-        beanDefinitionRegistry.removeBeanDefinition("apiModelPropertyPropertyBuilder");
+        // beanDefinitionRegistry.removeBeanDefinition("apiModelPropertyPropertyBuilder");
         beanDefinitionRegistry.removeBeanDefinition("defaultModelSpecificationProvider");
         if (beanDefinitionRegistry.containsBeanDefinition("minMaxPlugin")) {
             beanDefinitionRegistry.removeBeanDefinition("minMaxPlugin");
@@ -47,7 +50,7 @@ public class MyBeanDefinitionRegistryPostProcessor implements BeanDefinitionRegi
 // 设置 destory方法 没有就不用设置
         //   beanDefinitionBuilder.setDestroyMethodName("destory");
 // 将Bean 的定义注册到Spring环境
-      //  beanDefinitionRegistry.registerBeanDefinition(beanName, beanDefinitionBuilder.getBeanDefinition());
+        //  beanDefinitionRegistry.registerBeanDefinition(beanName, beanDefinitionBuilder.getBeanDefinition());
     }
 
     @Override

@@ -26,7 +26,7 @@ import java.util.function.Predicate;
  * @author dy
  */
 
-@ConditionalOnProperty(prefix = "slashdoc", value = "enabled", havingValue = "true")
+@ConditionalOnProperty(prefix = "slashdoc", value = "enabled", havingValue = "true", matchIfMissing = false)
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {

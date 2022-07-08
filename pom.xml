@@ -15,7 +15,7 @@
     </parent>
     <groupId>site.lanmushan</groupId>
     <artifactId>slash-doc</artifactId>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
     <packaging>pom</packaging>
     <name>slash-doc</name>
     <description>Demo project for Spring Boot</description>
@@ -51,12 +51,12 @@
             <dependency>
                 <groupId>site.lanmushan</groupId>
                 <artifactId>slash-doc-starter</artifactId>
-                <version>1.0.2</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>site.lanmushan</groupId>
                 <artifactId>slash-doc-demo</artifactId>
-                <version>1.0.2</version>
+                <version>${project.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

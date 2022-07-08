@@ -1,5 +1,6 @@
 package site.lanmushan.slashdocstarter.reader;
 
+import io.swagger.annotations.ApiModel;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -145,7 +146,12 @@ public class SlashApiDescriptionReader {
         for (ModelContext modelContext : modelContexts) {
             String modelKeyName = modelKey.getQualifiedModelName().getNamespace() + "." + modelKey.getQualifiedModelName().getName();
             String typeName = modelContext.getType().getErasedType().getName();
-            if (!modelContext.isReturnType() && modelKeyName.equals(typeName)) {
+            ApiModel apiModel = modelContext.getType().getErasedType().getAnnotation(ApiModel.class);
+            String tName = "";
+            if (apiModel != null) {
+                tName = modelContext.getType().getErasedType().getPackage().getName() + "." + apiModel.value();
+            }
+            if (!modelContext.isReturnType() && (modelKeyName.equals(typeName) || modelKeyName.equals(tName))) {
                 return modelContext;
             }
         }
